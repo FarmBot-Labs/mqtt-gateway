@@ -25,14 +25,17 @@ function requestConfig(username, password) {
 module.exports = function(username, password) {
   var options = requestConfig(username, password);
   var httpCallback;
-
+  console.log(1);
   var p = new Promise(function(ok, no) {
+    console.log(2);
     httpCallback = function(error, response, body) {
       var isOK = (!error && response.statusCode === 200);
+      console.log(3);
       var response = { error: error, response: response, body: body };
       (isOK) ? ok(response) : no(response);
     }
   });
+  console.log(4);
 
   request(options, httpCallback);
 

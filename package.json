@@ -19,5 +19,8 @@
   "dependencies": {
     "mosca": "^1.1.2",
     "mqtt": "^1.7.4"
+  },
+  "devDependencies": {
+    "locus": "^1.2.0"
   }
 }
