@@ -1,0 +1,23 @@
+{
+  "name": "farmbot-mqtt-gateway",
+  "version": "1.0.0",
+  "description": "MQTT gateway for Farmbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farmbot/mqtt-gateway.git"
+  },
+  "author": "Rick Carlino, Farmbot.io",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/farmbot/mqtt-gateway/issues"
+  },
+  "homepage": "https://github.com/farmbot/mqtt-gateway#readme",
+  "dependencies": {
+    "mosca": "^1.1.2",
+    "mqtt": "^1.7.4"
+  }
+}
