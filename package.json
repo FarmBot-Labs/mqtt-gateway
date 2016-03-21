@@ -21,6 +21,7 @@
     "mqtt": "^1.7.4"
   },
   "devDependencies": {
+    "jasmine": "^2.4.1",
     "locus": "^1.2.0"
   }
 }

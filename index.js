@@ -1,6 +1,6 @@
 var http = require('http');
 var mosca = require('mosca');
-var authenticate = require('./security/authenticate');
+var authenticate = require('./app/security/authenticate');
 
 var moscaSettings = {
   port: 1883,
