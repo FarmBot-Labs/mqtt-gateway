@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/farmbot/mqtt-gateway#readme",
   "dependencies": {
+    "axios": "^0.9.1",
     "mosca": "^1.1.2",
     "mqtt": "^1.7.4"
   },

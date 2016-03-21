@@ -1,11 +1,12 @@
 var http = require('http');
 var mosca = require('mosca');
 var authenticate = require('./app/security/authenticate');
+var conf = require('./app/config');
 
 var moscaSettings = {
-  port: 1883,
+  port: conf.mqttPort,
   http: { // for teh websockets
-    port: 3000,
+    port: conf.httpPort,
     bundle: true,
     static: './frontend'
   }
