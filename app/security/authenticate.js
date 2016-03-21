@@ -2,18 +2,12 @@
 var fetchToken = require("./fetch_token");
 
 module.exports = function(client, username, password, callback) {
-  username = username || "NOTPROVIDED";
-  password = (password || "NOTPROVIDED").toString()
-  console.log("Trying to auth.");
+  password = password.toString()
   fetchToken(username, password)
-    .then(function(response){
-      console.log("Did auth.");
-      console.log("User logged in");
+    .then(function(permissions){
+      client.permissions = permissions;
       callback(null, true);
-    })
-    .catch(function(error){
-      console.log("Did auth.");
-      console.log("User login failed!")
+    }, function(error){
       callback(null, false);
     });
 }

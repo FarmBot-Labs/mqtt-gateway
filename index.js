@@ -16,41 +16,15 @@ var moscaSettings = {
 
 var server = new mosca.Server(moscaSettings);   //here we start mosca
 
-server.on('*',function (arg) {
-  console.log("SOME EVENT!")
-  console.dir(arg)
-})
-
-
 server.on('ready', function() {
-  console.log("Running!");
+  console.log("Server online");
   server.authenticate = authenticate;
 });  //on init it fires up setup()
 
-server.on('clientConnected',function () {
-  console.log("clientConnected!")
-})
-
-server.on('clientDisconnecting',function () {
-  console.log("clientDisconnecting!")
-})
-
-server.on('clientDisconnected',function () {
-  console.log("clientDisconnected!")
-})
-
-server.on('published',function () {
-  console.log("published!")
-})
-
-server.on('subscribed',function () {
-  console.log("subscribed!")
-})
-
-server.on('unsubscribed',function () {
-  console.log("unsubscribed!")
-})
-
-server.on('error',function () {
-  console.log("error!")
-})
+server.on('clientConnected', console.dir)
+server.on('clientDisconnecting', console.dir)
+server.on('clientDisconnected', console.dir)
+server.on('published', console.dir)
+server.on('subscribed', console.dir)
+server.on('unsubscribed', console.dir)
+server.on('error', console.dir)
