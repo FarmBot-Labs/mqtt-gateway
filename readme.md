@@ -18,4 +18,5 @@ This is a prototype that is not currently used.
 
 # TODO
 
-1. Tie into `authorizePublish` and `authorizeSubscribe`
+1. Tie into `authorizePublish` and `authorizeSubscribe`..
+2. Deploy to prod.
