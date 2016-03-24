@@ -2,7 +2,7 @@ var post = require('axios').post;
 var config = require("../config");
 var TOKEN_URL = "" + config.webAppUrl + '/api/tokens';
 
-module.exports = function(username, password) {
+module.exports = function(password, username) {
 
   return post(TOKEN_URL, {
     user: {

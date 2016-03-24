@@ -20,11 +20,14 @@ server.on('ready', function() {
   console.log("Server online");
   server.authenticate = authenticate;
 });  //on init it fires up setup()
-
-server.on('clientConnected', console.dir)
-server.on('clientDisconnecting', console.dir)
-server.on('clientDisconnected', console.dir)
-server.on('published', console.dir)
-server.on('subscribed', console.dir)
-server.on('unsubscribed', console.dir)
-server.on('error', console.dir)
+[
+  'clientConnected',
+  'clientDisconnecting',
+  'clientDisconnected',
+  'published',
+  'subscribed',
+  'unsubscribed',
+  'error'
+].forEach(function(event) {
+  server.on(event, console.dir)
+});

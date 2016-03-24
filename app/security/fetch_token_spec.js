@@ -18,7 +18,7 @@ describe("token fetcher", function(){
       done();
     };
 
-    fetch(EMAIL, PASSWORD).then(ok, no)
+    fetch( PASSWORD, EMAIL ).then(ok, no)
   });
 
   it("handles failure", function(done) {
@@ -30,6 +30,6 @@ describe("token fetcher", function(){
       fail("Expected this request to fail");
       done();
     }
-    fetch(EMAIL, "wrong_password").then(ok, no)
+    fetch( "wrong_password", EMAIL ).then(ok, no)
   });
 });
