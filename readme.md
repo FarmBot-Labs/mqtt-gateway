@@ -16,16 +16,13 @@ This is a prototype that is not currently used.
 4. node index.js
 5. Visit `http://localhost:3000` or `mqtt://localhost:1883`
 
-# Deploy
+# Provisioning the Server
 
-0. Create a fresh Ubuntu 14.04 LTS image and install Docker (Hint: use scaleway or digitalocean)
-0. Run docker: `sudo service docker start`
-0. Install Dokku:
-```
-# installs dokku via apt-get
-wget https://raw.githubusercontent.com/dokku/dokku/v0.5.2/bootstrap.sh
-sudo DOKKU_TAG=v0.5.2 bash bootstrap.sh
-```
+0. Create a fresh Ubuntu 14 server with Dokku (or just use DigitalOcean)
+0. Install dokku-haproxy plugin: `ssh root@YOUR_SERVER dokku plugin:install https://github.com/256dpi/dokku-haproxy.git`
+0. Deploy: `git push dokku@YOUR_SERVER:00-default`
+0. Point to correct host/port: `ssh dokku@MQTT_SERVER config:set 00-default PORT=3002 DOKKU_NGINX_PORT=3002 WEB_APP_URL=WEBAPP_URL_HERE
+0. Expose MQTT port: `ssh dokku@mqtt.datamelon.io ports:add 00-default 1883 web 1883
 
 # TODO
 
