@@ -1,2 +1,2 @@
-web: echo "FARMBOT MQTT GATEWAY DOES NOT HAVE A WEB PROCESS!"
+web: npm start
 worker: npm start
