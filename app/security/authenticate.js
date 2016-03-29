@@ -21,6 +21,9 @@ module.exports = function(client, username, password, callback) {
       client.permissions = permissions;
       callback(null, true);
     }, function(error){
+      console.log(error);
+      console.dir(error);
+      console.log(error.message);
       client.authError = error
       callback(null, false);
     });
