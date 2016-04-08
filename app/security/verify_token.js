@@ -13,9 +13,6 @@ var getCertificate = get(url).then(keyOk, no);
 
 function verifyToken(token) {
   function ok(cert) {
-      console.dir(process.env);
-      console.log("======================================");
-      console.log(url);
       return jwt.verify(token, cert, { algorithms: ['RS256'] });
   }
 
