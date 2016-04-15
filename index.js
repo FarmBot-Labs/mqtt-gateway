@@ -29,5 +29,7 @@ server.on('ready', function() {
   'unsubscribed',
   'error'
 ].forEach(function(event) {
-  server.on(event, console.dir)
+  server.on(event, function(){
+    console.log("" + event + " event.");
+  });
 });

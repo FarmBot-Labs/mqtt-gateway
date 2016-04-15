@@ -18,12 +18,11 @@ module.exports = function(client, username, password, callback) {
   var auth = determineAuthStrategy(username, password);
   auth(password, username)
     .then(function(permissions){
+      console.log("Login OK for " + username);
       client.permissions = permissions;
       callback(null, true);
     }, function(error){
-      console.log(error);
-      console.dir(error);
-      console.log(error.message);
+      console.log("Failed to authorize " + username);
       client.authError = error
       callback(null, false);
     });
