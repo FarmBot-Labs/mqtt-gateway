@@ -23,6 +23,8 @@ module.exports = function(client, username, password, callback) {
       callback(null, true);
     }, function(error){
       console.log("Failed to authorize " + username);
+      console.log(error.message);
+      console.dir(error);
       client.authError = error
       callback(null, false);
     });
