@@ -46,11 +46,11 @@ The MQTT broker uses ENV vars as the main means of configuration. These must be 
 0. Create a clean Ubuntu server on your VPS vendor of choice. We recommend Digital Ocean.
 0. [Install Dokku](https://github.com/dokku/dokku#installing) on the server. Do NOT use Digital Ocean's one click "Dokku" image- it is outdated for this use case. 
 0. Install dokku-haproxy plugin: `ssh root@YOUR_SERVER dokku plugin:install https://github.com/256dpi/dokku-haproxy.git`
-0. Set ENV vars on server: `ssh dokku@MQTT_SERVER config:set mqtt MQTT_WEBSOCKET_PORT=3002 WEB_APP_URL=http://WEBAPP_URL_HERE DOKKU_PROXY_PORT_MAP=http:80:3002`
-0. Deploy: `git push dokku@YOUR_SERVER:YOUR_APP_NAME`.
+0. Deploy: `git push dokku@YOUR_SERVER:YOUR_APP_NAME`. Disregard this error: `remote: App container failed to start!!`.
+0. Set ENV vars on server: `ssh dokku@MQTT_SERVER config:set YOUR_APP_NAME MQTT_WEBSOCKET_PORT=3002 WEB_APP_URL=http://WEBAPP_URL_HERE DOKKU_PROXY_PORT_MAP=http:80:3002`
 0. Expose MQTT port: `ssh dokku@MQTT_SERVER ports:add YOUR_APP_NAME 1883 web 1883`. We don't support custom MQTT ports at the moment. 1883 is the only option. Submit an issue if you require this in your setup.
 0. Expose WebSocket port: `ssh dokku@MQTT_SERVER ports:add YOUR_APP_NAME 3002 web 3002`. If you set `MQTT_WEBSOCKET_PORT` to something other than 3002, wou would need to change the value from 3002 to whatever you are using locally.
-0. Restart app by running `ssh dokku@MQTT_SERVER config:set YOUR_APP_NAME FINISHED=true`
+0. Restart server via [sudo] `shutdown -r now`.
 
 # TODOS
 
