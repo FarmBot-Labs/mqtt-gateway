@@ -9,6 +9,8 @@ function keyOk(resp) {
 
 function no(error){
   console.log("Unable to download certificate from " + url);
+  console.log("Is the FarmBot API running?");
+  process.exit();
 }
 
 var getCertificate = get(url).then(keyOk, no);

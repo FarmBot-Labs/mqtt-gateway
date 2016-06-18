@@ -4,7 +4,8 @@
   "description": "MQTT gateway for Farmbot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "PORT=3002 WEB_APP_URL=http://localhost:3000 node index.js"
   },
   "repository": {
     "type": "git",
