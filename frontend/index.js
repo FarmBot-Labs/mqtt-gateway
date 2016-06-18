@@ -1,4 +1,4 @@
-var client = mqtt.connect("ws://mqtt.datamelon.io:3002", {
+var client = mqtt.connect("ws://staging.mqtt.farmbot.io:3002", {
 	username: 'test123@test.com',
 	password: 'password123'
 });
