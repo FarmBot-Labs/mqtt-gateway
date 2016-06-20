@@ -32,9 +32,8 @@ Subscribing to `bot/{ BOT_UUID }/*` via 3rd party MQTT client (Such as [MQTT FX]
 
 The MQTT broker uses ENV vars as the main means of configuration. These must be set properly for the app to work.
 
-* `MQTT_WEBSOCKET_PORT`: WebSocket connection port. We recommend using 3002. **NOTE** If you are using standard MQTT, that is *always* port 1883. Raise an issue if you need to run MQTT on a different port.
+* `MQTT_WEBSOCKET_PORT`: Optional. WebSocket connection port. We recommend using 3002. **NOTE** If you are using standard MQTT, that is *always* port 1883. Raise an issue if you need to run MQTT on a different port.
 * `WEB_APP_URL`: URL to your [FarmBot API](https://github.com/FarmBot/Farmbot-Web-API). For instance, if you were running the API locally, you would set this value to `localhost:3000`
-* `DOKKU_PROXY_PORT_MAP`: This is Dokku related. It should always be set to `http:80:3002`.
 
 # Running on Local (for development)
 
@@ -43,14 +42,7 @@ The MQTT broker uses ENV vars as the main means of configuration. These must be 
 
 # Provisioning a Production Server
 
-0. Create a clean Ubuntu server on your VPS vendor of choice. We recommend Digital Ocean.
-0. [Install Dokku](https://github.com/dokku/dokku#installing) on the server. Do NOT use Digital Ocean's one click "Dokku" image- it is outdated for this use case. 
-0. Install dokku-haproxy plugin: `ssh root@YOUR_SERVER dokku plugin:install https://github.com/256dpi/dokku-haproxy.git`
-0. Deploy: `git push dokku@YOUR_SERVER:YOUR_APP_NAME`. Disregard this error: `remote: App container failed to start!!`.
-0. Expose MQTT port: `ssh dokku@MQTT_SERVER ports:add YOUR_APP_NAME 1883 web 1883`. We don't support custom MQTT ports at the moment. 1883 is the only option. Submit an issue if you require this in your setup.
-0. Expose WebSocket port: `ssh dokku@MQTT_SERVER ports:add YOUR_APP_NAME 3002 web 3002`. If you set `MQTT_WEBSOCKET_PORT` to something other than 3002, wou would need to change the value from 3002 to whatever you are using locally.
-0. Set ENV vars on server: `ssh dokku@MQTT_SERVER config:set YOUR_APP_NAME WEB_APP_URL=http://WEBAPP_URL_HERE DOKKU_PROXY_PORT_MAP=http:80:3002`
-0. Re-deploy with `git push dokku@YOUR_SERVER:YOUR_APP_NAME`
+See `setup_notes.md`.
 
 # TODOS
 
