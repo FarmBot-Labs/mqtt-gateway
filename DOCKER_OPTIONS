@@ -1,3 +1,3 @@
--P
--p 3002
--p 1883
+-name farmbotmqtt
+-p 3002:3002 farmbotmqtt
+-p 1883:1883 farmbotmqtt
