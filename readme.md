@@ -47,7 +47,3 @@ The MQTT broker uses ENV vars as the main means of configuration. These must be 
 # Provisioning a Production Server
 
 See `setup_notes.md`.
-
-# TODOS
-
- * Technically, port `3002` and `1883` could be hard coded. The translation could be handled by HAProxy.
