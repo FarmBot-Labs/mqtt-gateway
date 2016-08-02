@@ -5,6 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "start": "node app/index.js",
+    "test": "node_modules/.bin/istanbul cover node_modules/.bin/jasmine",
     "dev": "WEB_APP_URL=http://localhost:3000 node app/index.js"
   },
   "repository": {
@@ -24,6 +25,7 @@
     "mqtt": "^1.7.4"
   },
   "devDependencies": {
+    "istanbul": "^0.4.4",
     "jasmine": "^2.4.1",
     "locus": "^1.2.0"
   }

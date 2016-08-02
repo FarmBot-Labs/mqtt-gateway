@@ -44,6 +44,10 @@ The MQTT broker uses ENV vars as the main means of configuration. These must be 
  * Start the [FarmBot API](https://github.com/FarmBot/Farmbot-Web-API) on your local machine on default port.
  * Run `npm run dev`
 
+# Running the Test Suite
+
+`npm test`
+
 # Provisioning a Production Server
 
 See `setup_notes.md`.

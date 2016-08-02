@@ -28,4 +28,16 @@ describe("authentication", function(){
     auth(client, EMAIL, validJWT, callback);
   })
 
+  it("logs in with a username/password", function(done) {
+    var finished = false;
+    var client = {};
+    var callback = function(_, isAuthorized){
+      expect(isAuthorized).toBeTruthy();
+      expect(client.permissions).toBeDefined();
+      expect(client.permissions.sub).toBe('admin@admin.com');
+      done();
+    };
+    auth(client, EMAIL, PASSWORD, callback);
+  });
+
 });
