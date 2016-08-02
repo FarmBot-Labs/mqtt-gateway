@@ -1,4 +1,4 @@
-var fetch = require("./fetch_token");
+var fetch = require("../../app/security/fetch_token");
 var EMAIL = "test123@test.com";
 var PASSWORD = "password123";
 

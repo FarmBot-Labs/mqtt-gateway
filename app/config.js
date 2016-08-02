@@ -20,6 +20,5 @@ module.exports = {
 }
 
 function missing(varName) {
-  throw new Error("You did not set the `" + varName + "` ENV var.");
-  process.exit();
+  console.warn("You did not set the `" + varName + "` ENV var.");
 }
