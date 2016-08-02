@@ -3,6 +3,7 @@ var client = mqtt.connect("ws://staging.mqtt.farmbot.io:3002", {
 	password: 'password123'
 });
 
+console.log(">???");
 client.subscribe("#");
 
 function puts(msg, topic){

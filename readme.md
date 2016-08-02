@@ -1,6 +1,6 @@
 # PLEASE READ
 
-You might not need to install this software. This software is used by the FarmBot team and advanced users who run their own FarmBot servers. We highly recommend that you use our publicly hosted server at [my.farmbot.io](http://my.farmbot.io), which elimintes the need for server setup.
+You might not need to install this software. This software is used by the FarmBot team and advanced users who run their own FarmBot servers. We highly recommend that you use our publicly hosted server at [my.farmbot.io](http://my.farmbot.io), which eliminte the need for server setup.
 
 # How It Works
 
@@ -25,8 +25,12 @@ Subscribing to `bot/{ BOT_UUID }/*` via 3rd party MQTT client (Such as [MQTT FX]
 1. git clone THIS_REPO
 2. cd THIS_REPO
 3. npm install
-4. node index.js
-5. Visit `http://localhost:3000` or `mqtt://localhost:1883`
+4. Setup and run the [Web API](https://github.com/FarmBot/Farmbot-Web-API) locally. We recommend running it on `http://localhost:3000`
+5. `WEB_APP_URL=http://localhost:3000 node app/index.js`. See note below*.
+6. Websocket MQTT is now available via `http://localhost:3002`. Raw MQTT (TCP connections) are available via `mqtt://localhost:1883`. 
+
+
+\* The assumption is that you are running a [Web API](https://github.com/FarmBot/Farmbot-Web-API) instance on `localhost:3000`. If you are using a different API server, please change `WEB_APP_URL` accordingly.
 
 # ENV var reference
 
