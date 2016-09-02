@@ -15,7 +15,7 @@
                 "--nolazy"
             ],
             "env": {
-                "WEB_APP_URL": "http://localhost:3000",
+                "WEB_API_URL": "http://localhost:3000",
                 "NODE_ENV": "development"
             },
             "externalConsole": false,
