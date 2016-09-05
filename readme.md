@@ -26,18 +26,18 @@ Subscribing to `bot/{ BOT_UUID }/*` via 3rd party MQTT client (Such as [MQTT FX]
 2. cd THIS_REPO
 3. npm install
 4. Setup and run the [Web API](https://github.com/FarmBot/Farmbot-Web-API) locally. We recommend running it on `http://localhost:3000`
-5. `WEB_APP_URL=http://localhost:3000 node app/index.js`. See note below*.
+5. `WEB_API_URL=http://localhost:3000 node app/index.js`. See note below*.
 6. Websocket MQTT is now available via `http://localhost:3002`. Raw MQTT (TCP connections) are available via `mqtt://localhost:1883`. 
 
 
-\* The assumption is that you are running a [Web API](https://github.com/FarmBot/Farmbot-Web-API) instance on `localhost:3000`. If you are using a different API server, please change `WEB_APP_URL` accordingly.
+\* The assumption is that you are running a [Web API](https://github.com/FarmBot/Farmbot-Web-API) instance on `localhost:3000`. If you are using a different API server, please change `WEB_API_URL` accordingly.
 
 # ENV var reference
 
 The MQTT broker uses ENV vars as the main means of configuration. These must be set properly for the app to work.
 
 * `MQTT_WEBSOCKET_PORT`: Optional. WebSocket connection port. We recommend using 3002. **NOTE** If you are using standard MQTT, that is *always* port 1883. Raise an issue if you need to run MQTT on a different port.
-* `WEB_APP_URL`: URL to your [FarmBot API](https://github.com/FarmBot/Farmbot-Web-API). For instance, if you were running the API locally, you would set this value to `localhost:3000`
+* `WEB_API_URL`: URL to your [FarmBot API](https://github.com/FarmBot/Farmbot-Web-API). For instance, if you were running the API locally, you would set this value to `localhost:3000`
 
 # Running on Local (for development)
 

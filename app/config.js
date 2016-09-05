@@ -3,10 +3,10 @@
 
 var webAppUrl, port;
 
-if (process.env.WEB_APP_URL) {
-  webAppUrl = process.env.WEB_APP_URL;
+if (process.env.WEB_API_URL) {
+  webAppUrl = process.env.WEB_API_URL;
 } else {
-  missing("WEB_APP_URL");
+  missing("WEB_API_URL");
 }
 
 if (parseInt(process.env.MQTT_WEBSOCKET_PORT) > 1) {
