@@ -51,3 +51,7 @@ The MQTT broker uses ENV vars as the main means of configuration. These must be 
 # Provisioning a Production Server
 
 See `setup_notes.md`.
+
+# Want to Help?
+
+[Low Hanging Fruit](https://github.com/FarmBot/mqtt-gateway/search?q=TODO&utf8=%E2%9C%93)
