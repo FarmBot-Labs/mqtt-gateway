@@ -16,7 +16,7 @@ function categorizeMessage(x) {
     switch (pattern) {
         case "_.string.string.array._": return "request";
         case "_.null.string.array._": return "notification";
-        case "null.string._.array._": return "success";
+        case "null.string._.object._": return "success";
         case "object.string._._.null": return "failure";
         default:
             console.warn("Bad data received.", o);
