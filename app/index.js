@@ -14,7 +14,17 @@ var server = new Server({
 server.on("ready", onReady(server));  //on init it fires up setup()
 server.on("published", function(x) {
   if(x && x.topic && (x.topic.slice(0,3) === "bot")) {
-    catchBadMessage(JSON.parse(x.payload.toString()), function(o) {
+    function is_valid_json(str) {
+      try {
+        JSON.parse(str)
+      } catch(e){
+        return false;
+      }
+      return true;
+    }
+    pl_str = x.payload.toString();
+    if(is_valid_json(pl_str)){
+      catchBadMessage(JSON.parse(pl_str), function(o) {
       console.log(`
 
       =============================
@@ -24,6 +34,13 @@ server.on("published", function(x) {
       `);
       console.dir(o.value);
     });
+    } else {
+      console.log(`
+      =============================
+      NON-JSONRPC COMPLIANT MESSAGE
+      =============================
+      `);
+    }
   }
 });
 
