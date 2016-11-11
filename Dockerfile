@@ -27,7 +27,5 @@ COPY . /app
 WORKDIR /app
 RUN npm install
 
-# TODO: INSTALL CERTBOT HERE!
-
 CMD ["npm", "start"]
 # sudo docker run -d -p 3002:3002 -p 1883:1883 --restart=always mqtt

@@ -53,27 +53,3 @@ var authorizePublish = require("./security/authorize_publish");
 var authorizeSubscribe = require("./security/authorize_subscribe");
 server.authorizePublish = authorizePublish;
 server.authorizeSubscribe = authorizeSubscribe;
-
-var env = process.env.NODE_ENV;
-var email = process.env.SSL_EMAIL;
-var domain = process.env.SSL_DOMAIN;
-
-if(env === "production" && email && domain) {
-  require('child_process')
-    .execSync(`letsencrypt certonly --webroot \
-                      -w /app/public \
-                      -d $SSL_DOMAIN \
-                      --text \
-                      --non-interactive \
-                      --agree-tos \
-                      --email $SSL_EMAIL`);
-} else {
-  console.log(`
-      ==========================================================================
-      WARNING: No SSL certificate infomation found in ___ and ___.
-      This will not prevent the MQTT server from running, but all messages will
-      be sent unecrypted.
-      ==========================================================================
-      `);
-
-}
