@@ -10,12 +10,6 @@ module.exports = function maybeEnableSSL(config) {
       certPath: cert,
     }
   } else {
-      console.log(`
-      ==========================================================================
-      WARNING: No SSL certificate infomation found in SSL_KEY and SSL_CERT.
-      This will not prevent the MQTT server from running, but all messages will
-      be sent unecrypted.
-      ==========================================================================
-      `);
+    console.log("================ FIX THIS!")
   }
 }
