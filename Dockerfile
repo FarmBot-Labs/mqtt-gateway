@@ -5,19 +5,29 @@ MAINTAINER rick@farmbot.io
 ENV WEB_API_URL http://staging.farmbot.io 
 ENV SSL_DOMAIN wow.rickcarlino.com
 ENV SSL_EMAIL rick@farmbot.io
-
 # DONT DELETE THIS
 ENV NODE_ENV production
-
+# Websocket based MQTT.
 EXPOSE 3002
+
+# Traditional TCP based MQTT.
 EXPOSE 1883
-COPY . /app
-WORKDIR /app
+
+ENV WEB_API_URL http://staging.farmbot.io 
 RUN apt-get update
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+RUN apt-get install -y curl
+
+# Install node:
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 RUN apt-get install -y letsencrypt
+
+# Install our app:
+COPY . /app
+WORKDIR /app
 RUN npm install
+
+# TODO: INSTALL CERTBOT HERE!
 
 CMD ["npm", "start"]
 # sudo docker run -d -p 3002:3002 -p 1883:1883 --restart=always mqtt
