@@ -13,9 +13,11 @@ EXPOSE 3002
 EXPOSE 1883
 COPY . /app
 WORKDIR /app
-RUN chmod +x deploy.sh
-RUN chmod +x post_deploy.sh
-RUN ./deploy.sh
+RUN apt-get update
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+RUN apt-get install -y nodejs
+RUN apt-get install -y letsencrypt
+RUN npm install
 
 CMD ["npm", "start"]
 # sudo docker run -d -p 3002:3002 -p 1883:1883 --restart=always mqtt
