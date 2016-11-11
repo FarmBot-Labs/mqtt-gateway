@@ -3,7 +3,7 @@ MAINTAINER rick@farmbot.io
 
 # Hardcoding this all for now while I work out the kinks.
 ENV WEB_API_URL http://staging.farmbot.io 
-ENV SSL_DOMAIN mqtt-staging.farmbot.io
+ENV SSL_DOMAIN wow.rickcarlino.com
 ENV SSL_EMAIL rick@farmbot.io
 
 # DONT DELETE THIS
