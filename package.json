@@ -22,7 +22,8 @@
     "axios": "^0.9.1",
     "jsonwebtoken": "^5.7.0",
     "mosca": "2.0.2",
-    "mqtt": "^1.7.4"
+    "mqtt": "^1.7.4",
+    "typescript": "^2.0.9"
   },
   "devDependencies": {
     "istanbul": "^0.4.4",

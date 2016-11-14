@@ -13,6 +13,7 @@ EXPOSE 3002
 # Traditional TCP based MQTT.
 EXPOSE 1883
 
+
 ENV WEB_API_URL http://staging.farmbot.io 
 RUN apt-get update
 RUN apt-get install -y curl

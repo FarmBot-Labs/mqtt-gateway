@@ -10,6 +10,6 @@ module.exports = function maybeEnableSSL(config) {
       certPath: cert,
     }
   } else {
-    console.log("================ FIX THIS!")
+    console.log("================ SKIPPING SSL SETUP")
   }
 }
