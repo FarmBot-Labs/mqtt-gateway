@@ -1,6 +1,10 @@
 #!/bin/bash
 
+# SEE ACTIVE LET'S ENCRYPT KEYS:
+ls /etc/letsencrypt/live/$SSL_DOMAIN/
+
 # HOW TO GET LET'S ENCRYPT RUNNING:
+    # You should only need to run this once per provisioning
     # STEP 1:
         # SSH into runing container and execute:
         # docker exec -i -t loving_heisenberg /bin/bash

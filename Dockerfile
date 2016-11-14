@@ -9,9 +9,12 @@ ENV SSL_EMAIL rick@farmbot.io
 ENV NODE_ENV production
 # Websocket based MQTT.
 EXPOSE 3002
-
+# HTTPS:// and WSS://
+EXPOSE 443
 # Traditional TCP based MQTT.
 EXPOSE 1883
+# Secure MQTT
+EXPOSE 8883
 
 
 ENV WEB_API_URL http://staging.farmbot.io 
