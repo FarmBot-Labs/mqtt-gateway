@@ -1,4 +1,4 @@
-var SSL = proces.env.SSL_DOMAIN;
+var SSL = process.env.SSL_DOMAIN;
 // ALL OF THESE HARDCODED VALUES ARE SET BY LETS ENCTRYPT/
 // CERTBOT. <3 EFF
 var SSL_DIR = `/etc/letsencrypt/live/${SSL}/`;
