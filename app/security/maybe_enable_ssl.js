@@ -8,7 +8,7 @@ var SSL_CERT = SSL_DIR + "cert.pem";
 var SSL_KEY = SSL_DIR + "privkey.pem";
 
 module.exports = function maybeEnableSSL(config) {
-  if (SSL) {
+    // if (SSL) {
     config.secure = config.secure || {};
     config.secure.port = SSL_MQTT_PORT;
     config.secure.keyPath = SSL_KEY;
@@ -16,7 +16,7 @@ module.exports = function maybeEnableSSL(config) {
 
     config.https = config.https || {};
     config.https.port = HTTPS_PORT;
-  } else {
-    console.log("================ SKIPPING SSL SETUP")
-  }
+    // } else {
+    //   console.log("================ SKIPPING SSL SETUP")
+    // }
 }
