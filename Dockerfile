@@ -17,7 +17,7 @@ EXPOSE 1883
 EXPOSE 8883
 
 
-ENV WEB_API_URL http://staging.farmbot.io 
+ENV WEB_API_URL https://enigmatic-meadow-89512.herokuapp.com 
 RUN apt-get update
 RUN apt-get install -y curl
 
