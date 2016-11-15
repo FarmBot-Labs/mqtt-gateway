@@ -1,23 +1,7 @@
 FROM ubuntu
 MAINTAINER rick@farmbot.io
 
-# Hardcoding this all for now while I work out the kinks.
-ENV WEB_API_URL http://staging.farmbot.io 
-ENV SSL_DOMAIN wow.rickcarlino.com
-ENV SSL_EMAIL rick@farmbot.io
-# DONT DELETE THIS
-ENV NODE_ENV production
-# Websocket based MQTT.
-EXPOSE 3002
-# HTTPS:// and WSS://
-EXPOSE 443
-# Traditional TCP based MQTT.
-EXPOSE 1883
-# Secure MQTT
-EXPOSE 8883
-
-
-ENV WEB_API_URL https://enigmatic-meadow-89512.herokuapp.com 
+# ENV WEB_API_URL https://enigmatic-meadow-89512.herokuapp.com 
 RUN apt-get update
 RUN apt-get install -y curl
 

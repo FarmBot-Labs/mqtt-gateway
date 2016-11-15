@@ -1,4 +1,5 @@
 #!/bin/bash
+exit
 
 # SEE ACTIVE LET'S ENCRYPT KEYS:
 ls /etc/letsencrypt/live/$SSL_DOMAIN/
@@ -26,6 +27,8 @@ ls /etc/letsencrypt/live/$SSL_DOMAIN/
 
 # HOW TO RUN THE IMAGE:
     sudo docker run -d -e WEB_API_URL=http://YOUR_API_URL_HERE \
+                    -e SSL_DOMAIN=mqtt.thisserver.com
+                    -e WEB_API_URL=you@sysadmin.com
                     -p 3002:3002 \
                     -p 1883:1883 \
                     -p 80:3002 \
