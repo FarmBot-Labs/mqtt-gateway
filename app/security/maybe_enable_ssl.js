@@ -8,15 +8,20 @@ var SSL_CERT = SSL_DIR + "cert.pem";
 var SSL_KEY = SSL_DIR + "privkey.pem";
 
 module.exports = function maybeEnableSSL(config) {
-    // if (SSL) {
-    config.secure = config.secure || {};
-    config.secure.port = SSL_MQTT_PORT;
-    config.secure.keyPath = SSL_KEY;
-    config.secure.certPath = SSL_CERT;
+    if (SSL) {
+        config.secure = config.secure || {};
+        config.secure.port = SSL_MQTT_PORT;
+        config.secure.keyPath = SSL_KEY;
+        config.secure.certPath = SSL_CERT;
 
-    config.https = config.https || {};
-    config.https.port = HTTPS_PORT;
-    // } else {
-    //   console.log("================ SKIPPING SSL SETUP")
-    // }
+        config.https = config.https || {};
+        config.https.port = HTTPS_PORT;
+    } else {
+        console.log(`
+        Running MQTT server in non-secure mode.
+        If you require HTTPS:// or SSL, please run Let's Encrypt Webroot plugin.
+        If you are running on a local network or are just doing development
+        work, you can ignore this message.
+        `);
+    }
 }
