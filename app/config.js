@@ -1,7 +1,8 @@
 // TODO: Clean up ENV management into something less crappy.
 // or use a 3rd party node ENV manager module.
 
-var webAppUrl, port;
+var webAppUrl;
+var log = require("./logger");
 
 if (process.env.WEB_API_URL) {
   webAppUrl = process.env.WEB_API_URL;
@@ -9,16 +10,12 @@ if (process.env.WEB_API_URL) {
   missing("WEB_API_URL");
 }
 
-if (parseInt(process.env.MQTT_WEBSOCKET_PORT) > 1) {
-  port = parseInt(process.env.MQTT_WEBSOCKET_PORT);
-};
-
 module.exports = {
   webAppUrl: webAppUrl,
-  httpPort:  port || 3002,
-  mqttPort:  1883
+  httpPort: 3002,
+  mqttPort: 1883
 }
 
 function missing(varName) {
-  console.warn("You did not set the `" + varName + "` ENV var.");
+  log("You did not set the `" + varName + "` ENV var.");
 }

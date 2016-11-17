@@ -33,7 +33,6 @@ Subscribing to `bot/{ BOT_UUID }/*` via 3rd party MQTT client (Such as [MQTT FX]
 
 The MQTT broker uses ENV vars as the main means of configuration. These must be set properly for the app to work.
 
- * `MQTT_WEBSOCKET_PORT`: **Optional.** WebSocket connection port. We recommend using 3002. **NOTE** If you are using standard MQTT, that is *always* port 1883. Raise an issue if you need to run MQTT on a different port.
  * `WEB_API_URL`: URL to your [FarmBot API](https://github.com/FarmBot/Farmbot-Web-API). For instance, if you were running the API locally, you would set this value to `localhost:3000`.
  * `SSL_DOMAIN`: **Optional.**. Do not set if you do not plan on using [Let's Encrypt](https://letsencrypt.org/). This is the domain that Let's Encrypt will verify ownership of.
  * `SSL_EMAIL`: **Optional.**. Email for correspondence related to [Let's Encrypt](https://letsencrypt.org/).

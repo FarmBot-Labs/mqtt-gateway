@@ -6,9 +6,8 @@
  0. Run this:
 
 ```shell
-sudo docker run -d -e WEB_API_URL=http://YOUR_API_URL_HERE \
-                -e SSL_DOMAIN=YOUR_MQTT_URL_HERE \
-                -e SSL_EMAIL=you@domain.com \
+sudo docker run -d 
+                -e WEB_API_URL=http://YOUR_API_URL_HERE \
                 -p 3002:3002 \
                 -p 8883:8883 \
                 -p 1883:1883 \
@@ -34,11 +33,11 @@ From inside the container, run:
 
 letsencrypt certonly --webroot \
                     -w /app/public \
-                    -d $SSL_DOMAIN \
+                    -d SSL_DOMAIN_HERE \
                     --text \
                     --non-interactive \
                     --agree-tos \
-                    --email $SSL_EMAIL
+                    --email SSL_EMAIL_HERE
 
 ```
 
@@ -50,12 +49,24 @@ SSH into the runing docker container (`docker exec -i -t CONTAINER_ID_HERE /bin/
 
 **Step 2**
 
-SSH into the runing docker container  (`docker exec -i -t CONTAINER_ID_HERE /bin/bash`)
+Run `letsencrypt renew` within 90 day. There is a `--force` flag if you care to use it.
 
 **Step 3**
 
-Run `letsencrypt renew`. There is a `--force` flag if you care to use it.
+Kill the container. `docker kill CONTAINER_NAME`.
+Re-run the container, this time with two extra ENV vars:
 
-**Step 4**
+```shell
 
-Restart the container. `docker restart CONTAINER_NAME`.
+sudo docker run -d \
+                -e WEB_API_URL=http://YOUR_API_URL_HERE \
+                -e SSL_DOMAIN=YOUR_MQTT_URL_HERE \
+                -e SSL_EMAIL=you@domain.com \
+                -p 3002:3002 \
+                -p 8883:8883 \
+                -p 1883:1883 \
+                -p 80:3002 \
+                -p 443:443 \
+                -v /etc/letsencrypt/:/etc/letsencrypt/ \
+                --restart=always mqtt
+```

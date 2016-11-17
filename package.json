@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "start": "node app/index.js",
-    "test": "node_modules/.bin/istanbul cover node_modules/.bin/jasmine",
+    "test": "WEB_API_URL=http://localhost:3000 node_modules/.bin/istanbul cover node_modules/.bin/jasmine",
     "dev": "WEB_API_URL=http://localhost:3000 node app/index.js"
   },
   "repository": {
@@ -19,15 +19,13 @@
   },
   "homepage": "https://github.com/farmbot/mqtt-gateway#readme",
   "dependencies": {
-    "axios": "^0.9.1",
-    "jsonwebtoken": "^5.7.0",
+    "axios": "^0.15.2",
+    "jsonwebtoken": "^7.1.9",
     "mosca": "2.0.2",
-    "mqtt": "^1.7.4",
-    "typescript": "^2.0.9"
+    "mqtt": "^1.7.4"
   },
   "devDependencies": {
     "istanbul": "^0.4.4",
-    "jasmine": "^2.4.1",
-    "locus": "^1.2.0"
+    "jasmine": "^2.4.1"
   }
 }

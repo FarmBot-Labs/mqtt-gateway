@@ -1,9 +1,10 @@
 var authenticate = require("./security/authenticate");
 var authorizePublish = require("./security/authorize_publish");
 var authorizeSubscribe = require("./security/authorize_subscribe");
+var log = require("./logger");
 
 module.exports = (server) => () => {
-    console.log("Server online");
+    log("Server online");
     startLogging(server);
     startSecurity(server);
 };
@@ -25,7 +26,7 @@ function startLogging(server) {
         "error"
     ].forEach(function (event) {
         server.on(event, function () {
-            console.log("" + event + " event.");
+            log("" + event + " event.");
         });
     });
 }
