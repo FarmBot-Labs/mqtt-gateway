@@ -15,39 +15,40 @@ var input = {
 maybeEnableSSL(input)
 var server = new Server(input);
 
+server.on("clientConnected", function (client) {
+  console.log("clientConnected");
+  console.dir(Object.keys(arguments[0] || {}))
+});
+
+server.on("clientDisconnecting", function (client) {
+  console.log("clientDisconnecting");
+  console.dir(Object.keys(arguments[0] || {}))
+});
+
+server.on("clientDisconnected", function (client) {
+  console.log("clientDisconnected");
+  console.dir(Object.keys(arguments[0] || {}))
+});
+
+server.on("published", function (client, packet) {
+  console.log("<published>");
+  console.log("    ", client.topic);
+  console.log("    ", client.payload.toString().slice(0, 80));
+  console.log("</published>");
+});
+
+server.on("subscribed", function (topic, client) {
+  console.log("subscribed");
+  console.dir(Object.keys(arguments[0] || {}))
+});
+
+server.on("unsubscribed", function (topic, client) {
+  console.log("unsubscribed");
+  console.dir(Object.keys(arguments[0] || {}))
+});
+
 
 server.on("ready", onReady(server));  //on init it fires up setup()
-server.on("published", function(x) {
-  if(x && x.topic && (x.topic.slice(0,3) === "bot")) {
-    function is_valid_json(str) {
-      try {
-        JSON.parse(str)
-      } catch(e){
-        return false;
-      }
-      return true;
-    }
-    pl_str = x.payload.toString();
-    if(is_valid_json(pl_str)){
-      catchBadMessage(JSON.parse(pl_str), function(o) {
-      console.log(`
-
-      =============================
-      NON-JSONRPC COMPLIANT MESSAGE
-      =============================
-
-      `);
-      console.dir(o.value);
-    });
-    } else {
-      console.log(`
-      =============================
-      NON-JSONRPC COMPLIANT MESSAGE
-      =============================
-      `);
-    }
-  }
-});
 
 var authorizePublish = require("./security/authorize_publish");
 var authorizeSubscribe = require("./security/authorize_subscribe");
