@@ -21,7 +21,7 @@
   "dependencies": {
     "axios": "^0.15.2",
     "jsonwebtoken": "^7.1.9",
-    "mosca": "2.0.2",
+    "mosca": "^2.2.0",
     "mqtt": "^1.7.4"
   },
   "devDependencies": {

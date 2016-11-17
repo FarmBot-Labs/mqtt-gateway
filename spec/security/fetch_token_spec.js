@@ -23,7 +23,7 @@ describe("token fetcher", function(){
 
   it("handles failure", function(done) {
     function no(error) {
-      expect(error.status).toEqual(422);
+      expect(error.response.status).toEqual(422);
       done();
     }
     function ok() {
