@@ -40,3 +40,21 @@ letsencrypt certonly --webroot \
                     --email $SSL_EMAIL
 
 ```
+
+# Renewing SSL Certs with Let's Encrypt
+
+**Step 1**
+
+SSH into the runing docker container (`docker exec -i -t CONTAINER_ID_HERE /bin/bash`)
+
+**Step 2**
+
+SSH into the runing docker container  (`docker exec -i -t CONTAINER_ID_HERE /bin/bash`)
+
+**Step 3**
+
+Run `letsencrypt renew`. There is a `--force` flag if you care to use it.
+
+**Step 4**
+
+Restart the container. `docker restart CONTAINER_NAME`.
