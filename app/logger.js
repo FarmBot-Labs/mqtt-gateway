@@ -1,3 +1,5 @@
 module.exports = function () {
-    return;
+    if (!process.env.DISABLE_LOGS) {
+        console.log.apply(this, arguments);
+    }
 }
