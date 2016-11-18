@@ -43,6 +43,8 @@ letsencrypt certonly --webroot \
 
 # Renewing SSL Certs with Let's Encrypt
 
+**NOTE:** I have made a script, `letsencrypt_renewal.sh` to help.
+
 **Step 1**
 
 SSH into the runing docker container (`docker exec -i -t CONTAINER_ID_HERE /bin/bash`)
