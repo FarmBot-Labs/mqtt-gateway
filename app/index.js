@@ -11,6 +11,7 @@ var input = {
         static: "./public"
     }
 };
+
 maybeEnableSSL(input)
 var server = new Server(input);
 
