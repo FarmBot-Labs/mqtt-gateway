@@ -11,12 +11,15 @@ module.exports = function (password, username) {
     }
   };
   var email = params.user.email;
-  return post(TOKEN_URL, params)
-    .then(function (resp) {
-      log("" + email + " logged in.");
-      return resp.data.token.unencoded
-    }, function (error) {
-      log("Failed to log in user " + email + " " + TOKEN_URL);
-      return Promise.reject(error);
-    });
+  var e = new Error(
+    "Login credentials are too short. Use a JSON web token as password");
+  return Promise.reject(e);
+  // return post(TOKEN_URL, params)
+  //   .then(function (resp) {
+  //     log("" + email + " logged in.");
+  //     return resp.data.token.unencoded
+  //   }, function (error) {
+  //     log("Failed to log in user " + email + " " + TOKEN_URL);
+  //     return Promise.reject(error);
+  //   });
 }
