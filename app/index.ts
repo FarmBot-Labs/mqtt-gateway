@@ -1,7 +1,9 @@
-let Server = require("mosca").Server;
-let conf = require("./config");
-let onReady = require("./on_ready");
-let maybeEnableSSL = require("./security/maybe_enable_ssl");
+import { Server } from "mosca";
+import { conf } from "./config";
+import { onReady } from "./on_ready";
+import { maybeEnableSSL } from "./security/maybe_enable_ssl";
+import { authorizePublish } from "./security/authorize_publish";
+import { authorizeSubscribe } from "./security/authorize_subscribe";
 
 let input = {
     allowNonSecure: true,
@@ -20,7 +22,5 @@ server.on("ready", onReady(server));  //on init it fires up setup()
 server.on("ready", function() {
     console.dir(input);
 });
-let authorizePublish = require("./security/authorize_publish");
-let authorizeSubscribe = require("./security/authorize_subscribe");
 server.authorizePublish = authorizePublish;
 server.authorizeSubscribe = authorizeSubscribe;

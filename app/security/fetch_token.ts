@@ -1,7 +1,8 @@
-let post = require('axios').post;
-let config = require("../config");
-let TOKEN_URL = "" + config.webAppUrl + '/api/tokens';
-let log = require("../logger");
+import { post } from "axios";
+import { webAppUrl } from "../config";
+import { log } from "../logger";
+
+const TOKEN_URL = "" + config.webAppUrl + '/api/tokens';
 
 export default function (password, username) {
   let params = {

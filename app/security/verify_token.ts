@@ -1,7 +1,9 @@
-let url = require('../config').webAppUrl + "/api/public_key";
-let get = require('axios').get;
-let jwt = require('jsonwebtoken');
-let log = require("../logger");
+import { webAppUrl } from "../config";
+import { get } from "axios";
+import * as jwt from "jsonwebtoken";
+import { log } from "../logger";
+
+let url = webAppUrl + "/api/public_key";
 
 function keyOk(resp) {
   log("Downloaded certificate from " + url);

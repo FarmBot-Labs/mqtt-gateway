@@ -1,7 +1,7 @@
 // test@test.com password123
-let fetchToken = require("./fetch_token");
-let verifyToken = require("./verify_token");
-let log = require("../logger");
+import { fetchToken } from "./fetch_token";
+import { verifyToken } from "./verify_token";
+import { log } from "../logger";
 
 function determineAuthStrategy(username, password) {
     // Really long password? Probably a JWT.

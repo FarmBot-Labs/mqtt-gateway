@@ -1,7 +1,7 @@
-let authenticate = require("./security/authenticate");
-let authorizePublish = require("./security/authorize_publish");
-let authorizeSubscribe = require("./security/authorize_subscribe");
-let log = require("./logger");
+import { authenticate } from "./security/authenticate";
+import { authorizePublish } from "./security/authorize_publish";
+import { authorizeSubscribe } from "./security/authorize_subscribe";
+import { log } from "./logger";
 
 module.exports = (server) => () => {
     log("Server online");

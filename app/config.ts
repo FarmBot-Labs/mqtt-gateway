@@ -1,4 +1,4 @@
-let log = require("./logger");
+import log from "./logger";
 
 // TODO: Clean up ENV management into something less crappy.
 // or use a 3rd party node ENV manager module.

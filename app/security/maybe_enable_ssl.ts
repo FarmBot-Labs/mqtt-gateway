@@ -6,7 +6,7 @@ let SSL_MQTT_PORT = 8883;
 let HTTPS_PORT = 443;
 let SSL_CERT = SSL_DIR + "cert.pem";
 let SSL_KEY = SSL_DIR + "privkey.pem";
-let log = require("../logger");
+import { log } from "../logger";
 
 export default function maybeEnableSSL(config) {
     if (SSL) {
