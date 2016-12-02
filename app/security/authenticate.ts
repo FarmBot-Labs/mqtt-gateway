@@ -2,8 +2,10 @@
 import { fetchToken } from "./fetch_token";
 import { verifyToken } from "./verify_token";
 import { log } from "../logger";
+import Axios, { Promise as AxiosPromise } from "axios";
 
-function determineAuthStrategy(username, password) {
+type tokenHandler = (u: string, pass: string) => AxiosPromise<any>;
+function determineAuthStrategy(username: string, password: string): tokenHandler {
     // Really long password? Probably a JWT.
     if (password.length > 100) {
         return verifyToken;
@@ -12,7 +14,7 @@ function determineAuthStrategy(username, password) {
     }
 };
 
-export default function (client, username, password, callback) {
+export function authenticate(client, username: string, password: string, callback) {
     password = (password || "").toString();
     username = username || "";
     let auth = determineAuthStrategy(username, password);

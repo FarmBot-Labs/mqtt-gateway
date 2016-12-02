@@ -1,5 +1,5 @@
 import { Server } from "mosca";
-import { conf } from "./config";
+import * as conf from "./config";
 import { onReady } from "./on_ready";
 import { maybeEnableSSL } from "./security/maybe_enable_ssl";
 import { authorizePublish } from "./security/authorize_publish";

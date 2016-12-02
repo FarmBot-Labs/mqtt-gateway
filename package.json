@@ -23,13 +23,13 @@
     "@types/axios": "^0.9.34",
     "@types/jsonwebtoken": "^7.1.33",
     "@types/mqtt": "0.0.32",
+    "@types/node": "0.0.2",
     "axios": "^0.15.2",
     "jsonwebtoken": "^7.1.9",
     "mosca": "^2.2.0",
     "mqtt": "^1.7.4"
   },
   "devDependencies": {
-    "@types/node": "0.0.2",
     "istanbul": "^0.4.4",
     "jasmine": "^2.4.1",
     "nodemon": "^1.11.0",

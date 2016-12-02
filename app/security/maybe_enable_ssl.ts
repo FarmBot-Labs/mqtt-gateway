@@ -8,7 +8,7 @@ let SSL_CERT = SSL_DIR + "cert.pem";
 let SSL_KEY = SSL_DIR + "privkey.pem";
 import { log } from "../logger";
 
-export default function maybeEnableSSL(config) {
+export function maybeEnableSSL(config) {
     if (SSL) {
         config.secure = config.secure || {};
         config.secure.port = SSL_MQTT_PORT;
