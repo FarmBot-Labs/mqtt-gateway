@@ -5,10 +5,18 @@ declare module "mosca" {
         logger?: {
             level: string
         },
+        https?: {
+            port?: number,
+        },
         http?: {
             port?: number,
             bundle?: boolean,
             static?: string
+        },
+        secure?: {
+            port: number;
+            keyPath: string;
+            certPath: string;
         }
     }
 

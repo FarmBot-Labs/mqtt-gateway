@@ -1,16 +1,36 @@
 import { log } from "./logger";
+import { ServerOpts } from "mosca";
 
-// TODO: Clean up ENV management into something less crappy.
-// or use a 3rd party node ENV manager module.
-export let DEFAULT_URL = "http://localhost:3000";
-export let webAppUrl;
-export let httpPort = 3002;
-export let mqttPort = 1883;
+export let webAppUrl = process.env.WEB_API_URL || "http://localhost:3000";
+log(`Using ${webAppUrl} as API URL`);
 
-if (process.env.WEB_API_URL) {
-    webAppUrl = process.env.WEB_API_URL;
-} else {
-    webAppUrl = DEFAULT_URL;
-    log("You did not set WEB_API_URL. Defaulting to " + DEFAULT_URL);
+export function generateConfig(sslDomain = "") {
+    const SSL_DIR = `/etc/letsencrypt/live/${sslDomain}/`;
+
+    let config: ServerOpts = {
+        allowNonSecure: true,
+        port: 1883,
+        http: { // for teh websockets
+            port: 3002,
+            bundle: true,
+            static: "./public"
+        },
+        https: {
+            port: 443
+        },
+        secure: {
+            port: 8883,
+            keyPath: SSL_DIR + "privkey.pem",
+            certPath: SSL_DIR + "cert.pem"
+        }
+    };
+
+    // Remove SSL features if SSL_DOMAIN
+    // was not set.
+    if (!sslDomain) {
+        delete config.https;
+        delete config.secure;
+    }
+
+    return config;
 }
-

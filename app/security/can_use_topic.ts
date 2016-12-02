@@ -4,7 +4,10 @@ import { log } from "../logger";
 // following pattern bot/XYZ/#
 
 export function canUseTopic(client, topic) {
-    let hasBot = topic && client && client.permissions && client.permissions.bot;
+    let hasBot = topic &&
+        client &&
+        client.permissions &&
+        client.permissions.bot;
     if (!hasBot) {
         log("Tried to access topic " + (topic || "???") + " but no bot/topic provided.");
         return false;

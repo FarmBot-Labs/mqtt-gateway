@@ -7,7 +7,7 @@ let url = webAppUrl + "/api/public_key";
 
 function keyOk(resp) {
     log("Downloaded certificate from " + url);
-    return new Buffer(resp.data, 'utf8');
+    return new Buffer(resp.data, "utf8");
 }
 
 function no(error) {
@@ -24,9 +24,9 @@ export function verifyToken(token) {
     }
 
     function ok(cert) {
-        log("Did fetch certifiacte. Will verify token with certificate.");
-        return jwt.verify(token, cert, { algorithms: ['RS256'] });
+        log("Did fetch certificate. Will verify token with certificate.");
+        return jwt.verify(token, cert, { algorithms: ["RS256"] });
     }
-    log("Will fetch certificate...")
-    return getCertificate.then(ok, no)
+    log("Will fetch certificate...");
+    return getCertificate.then(ok, no);
 };

@@ -23,13 +23,13 @@
     "@types/jsonwebtoken": "^7.1.33",
     "@types/mqtt": "0.0.32",
     "@types/node": "0.0.2",
-    "@types/jest": "^16.0.1",
     "axios": "^0.15.2",
     "jsonwebtoken": "^7.1.9",
     "mosca": "^2.2.0",
     "mqtt": "^1.7.4"
   },
   "devDependencies": {
+    "@types/jest": "^16.0.1",
     "jest": "^17.0.3",
     "nodemon": "^1.11.0",
     "ts-jest": "^17.0.3",
