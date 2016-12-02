@@ -1,7 +1,7 @@
 // test@test.com password123
-var fetchToken = require("./fetch_token");
-var verifyToken = require("./verify_token");
-var log = require("../logger");
+let fetchToken = require("./fetch_token");
+let verifyToken = require("./verify_token");
+let log = require("../logger");
 
 function determineAuthStrategy(username, password) {
     // Really long password? Probably a JWT.
@@ -12,21 +12,20 @@ function determineAuthStrategy(username, password) {
     }
 };
 
-// TODO This app needs a logger.
-module.exports = function(client, username, password, callback) {
+export default function (client, username, password, callback) {
     password = (password || "").toString();
     username = username || "";
-    var auth = determineAuthStrategy(username, password);
+    let auth = determineAuthStrategy(username, password);
     if (client && client.connection && client.connection.stream) {
         log(client.connection.stream.remoteAddress);
     }
     log("AUTH START")
     auth(password, username)
-        .then(function(permissions) {
+        .then(function (permissions) {
             log("AUTH OK " + username);
             client.permissions = permissions;
             callback(null, true);
-        }, function(error) {
+        }, function (error) {
             log("AUTH FAIL " + username);
             log(error.message);
             log(error);

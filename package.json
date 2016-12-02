@@ -4,6 +4,7 @@
   "description": "MQTT gateway for Farmbot",
   "main": "app/index.js",
   "scripts": {
+    "ts": "nodemon --exec ./node_modules/.bin/ts-node -- ./app/index.ts",
     "start": "node app/index.js",
     "test": "node_modules/.bin/istanbul cover node_modules/.bin/jasmine",
     "dev": "WEB_API_URL=http://localhost:3000 node app/index.js"
@@ -19,13 +20,20 @@
   },
   "homepage": "https://github.com/farmbot/mqtt-gateway#readme",
   "dependencies": {
+    "@types/axios": "^0.9.34",
+    "@types/jsonwebtoken": "^7.1.33",
+    "@types/mqtt": "0.0.32",
     "axios": "^0.15.2",
     "jsonwebtoken": "^7.1.9",
     "mosca": "^2.2.0",
     "mqtt": "^1.7.4"
   },
   "devDependencies": {
+    "@types/node": "0.0.2",
     "istanbul": "^0.4.4",
-    "jasmine": "^2.4.1"
+    "jasmine": "^2.4.1",
+    "nodemon": "^1.11.0",
+    "ts-node": "^1.7.0",
+    "typescript": "^2.0.10"
   }
 }

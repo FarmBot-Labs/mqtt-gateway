@@ -1,7 +1,7 @@
-var url = require('../config').webAppUrl + "/api/public_key";
-var get = require('axios').get;
-var jwt = require('jsonwebtoken');
-var log = require("../logger");
+let url = require('../config').webAppUrl + "/api/public_key";
+let get = require('axios').get;
+let jwt = require('jsonwebtoken');
+let log = require("../logger");
 
 function keyOk(resp) {
   log("Downloaded certificate from " + url);
@@ -14,9 +14,9 @@ function no(error) {
   process.exit();
 }
 
-var getCertificate = get(url).then(keyOk, no);
+let getCertificate = get(url).then(keyOk, no);
 
-function verifyToken(token) {
+export default function verifyToken(token) {
   function no(error) {
     log("Unable to verify token " + url);
   }
@@ -27,6 +27,4 @@ function verifyToken(token) {
   }
   log("Will fetch certificate...")
   return getCertificate.then(ok, no)
-}
-
-module.exports = verifyToken;
+};

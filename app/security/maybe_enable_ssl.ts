@@ -1,14 +1,14 @@
-var SSL = process.env.SSL_DOMAIN;
+let SSL = process.env.SSL_DOMAIN;
 // ALL OF THESE HARDCODED VALUES ARE SET BY LETS ENCTRYPT/
 // CERTBOT. <3 EFF
-var SSL_DIR = `/etc/letsencrypt/live/${SSL}/`;
-var SSL_MQTT_PORT = 8883;
-var HTTPS_PORT = 443;
-var SSL_CERT = SSL_DIR + "cert.pem";
-var SSL_KEY = SSL_DIR + "privkey.pem";
-var log = require("../logger");
+let SSL_DIR = `/etc/letsencrypt/live/${SSL}/`;
+let SSL_MQTT_PORT = 8883;
+let HTTPS_PORT = 443;
+let SSL_CERT = SSL_DIR + "cert.pem";
+let SSL_KEY = SSL_DIR + "privkey.pem";
+let log = require("../logger");
 
-module.exports = function maybeEnableSSL(config) {
+export default function maybeEnableSSL(config) {
     if (SSL) {
         config.secure = config.secure || {};
         config.secure.port = SSL_MQTT_PORT;
