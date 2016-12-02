@@ -4,7 +4,6 @@
   "description": "MQTT gateway for Farmbot",
   "main": "app/index.js",
   "scripts": {
-    "ts": "nodemon --exec ./node_modules/.bin/ts-node -- ./app/index.ts",
     "start": "nodemon --exec ./node_modules/.bin/ts-node -- ./app/index.ts",
     "test": "node_modules/.bin/istanbul cover node_modules/.bin/jasmine",
     "dev": "WEB_API_URL=http://localhost:3000 node app/index.js"
