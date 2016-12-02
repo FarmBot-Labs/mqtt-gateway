@@ -31,7 +31,7 @@ export function authenticate(client, username: string, password: string, callbac
             log("AUTH FAIL " + username);
             log(error.message);
             log(error);
-            client.authError = error
+            client.authError = error;
             callback(null, false);
         });
 }

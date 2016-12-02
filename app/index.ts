@@ -1,11 +1,11 @@
-import { Server } from "mosca";
+import { Server, ServerOpts } from "mosca";
 import * as conf from "./config";
 import { onReady } from "./on_ready";
 import { maybeEnableSSL } from "./security/maybe_enable_ssl";
 import { authorizePublish } from "./security/authorize_publish";
 import { authorizeSubscribe } from "./security/authorize_subscribe";
 
-let input = {
+let input: ServerOpts = {
     allowNonSecure: true,
     port: conf.mqttPort,
     http: { // for teh websockets
@@ -15,11 +15,11 @@ let input = {
     }
 };
 
-maybeEnableSSL(input)
+maybeEnableSSL(input);
 let server = new Server(input);
 
-server.on("ready", onReady(server));  //on init it fires up setup()
-server.on("ready", function() {
+server.on("ready", onReady(server));
+server.on("ready", function () {
     console.dir(input);
 });
 server.authorizePublish = authorizePublish;
