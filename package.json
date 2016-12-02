@@ -5,8 +5,8 @@
   "main": "app/index.js",
   "scripts": {
     "start": "nodemon --exec ./node_modules/.bin/ts-node -- ./app/index.ts",
-    "test": "node_modules/.bin/istanbul cover node_modules/.bin/jasmine",
-    "dev": "WEB_API_URL=http://localhost:3000 node app/index.js"
+    "test": "jest --coverage --no-cache",
+    "dev": "WEB_API_URL=http://localhost:3000 npm start"
   },
   "repository": {
     "type": "git",
@@ -26,13 +26,32 @@
     "axios": "^0.15.2",
     "jsonwebtoken": "^7.1.9",
     "mosca": "^2.2.0",
+    "@types/jest": "^16.0.1",
     "mqtt": "^1.7.4"
   },
   "devDependencies": {
     "istanbul": "^0.4.4",
-    "jasmine": "^2.4.1",
+    "jest": "^17.0.3",
     "nodemon": "^1.11.0",
+    "ts-jest": "^17.0.3",
     "ts-node": "^1.7.0",
     "typescript": "^2.0.10"
+  },
+  "jest": {
+    "coverageReporters": [
+      "html"
+    ],
+    "rootDir": "./",
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+    "testRegex": "/__tests__/.*\\.(ts|tsx|js)$",
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }
