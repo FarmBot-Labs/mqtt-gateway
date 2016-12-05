@@ -1,6 +1,6 @@
-import { authenticate } from "./security/authenticate";
-import { authorizePublish } from "./security/authorize_publish";
-import { authorizeSubscribe } from "./security/authorize_subscribe";
+import { authenticate } from "./authentication/authenticate";
+import { authorizePublish } from "./authorization/authorize_publish";
+import { authorizeSubscribe } from "./authorization/authorize_subscribe";
 import { log } from "./logger";
 
 export let onReady = (server) => () => {

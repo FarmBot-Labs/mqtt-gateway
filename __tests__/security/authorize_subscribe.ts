@@ -1,4 +1,4 @@
-import * as all from "../../app/security/authorize_subscribe";
+import * as all from "../../app/authorization/authorize_subscribe";
 
 describe("foo", () => {
     it("bars", () => {

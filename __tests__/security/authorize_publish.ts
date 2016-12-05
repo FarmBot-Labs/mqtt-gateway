@@ -1,4 +1,4 @@
-import * as all from "../../app/security/authorize_publish";
+import * as all from "../../app/authorization/authorize_publish";
 
 describe("foo", () => {
     it("bars", () => {
