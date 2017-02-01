@@ -9,13 +9,16 @@ export let onReady = (server) => () => {
     server.on("clientDisconnecting", () => log("clientDisconnecting"));
     server.on("clientDisconnected", () => log("clientDisconnected"));
     server.on("published", function () {
-        log("published");
+        log("\n=== Incoming Message ===");
+        let output: string;
         try {
             console.log(arguments[0].topic);
-            var s = String.fromCharCode.apply(null, new Uint16Array(arguments[0].payload));
-            console.log(JSON.stringify(JSON.parse(s), null, 2));
+            let s = String.fromCharCode.apply(null, new Uint16Array(arguments[0].payload));
+            output = JSON.stringify(JSON.parse(s), null, 2);
         } catch (error) {
-            console.dir(error);
+            output = arguments[0].payload;
+        } finally {
+            console.log(output);
         }
     });
     server.on("subscribed", () => log("subscribed"));
