@@ -17,47 +17,14 @@ sudo docker run -d \
                 --restart=always mqtt
 ```
 
+Add this to command above if you use SSH:
+
+```
+    -e SSL_DOMAIN=YOUR_MQTT_SERVER_HOSTNAME_HERE
+```
+
 The server is now running.
 
-# Using SSL with Let's Encrypt
-
-**STEP 1:**
-
-SSH into the runing docker container  (`docker exec -i -t CONTAINER_ID_HERE /bin/bash`)
-
-**STEP 2:**
-
-From inside the container, run:
-
-```shell
-
-letsencrypt certonly --webroot \
-                    -w /app/public \
-                    -d SSL_DOMAIN_HERE \
-                    --text \
-                    --non-interactive \
-                    --agree-tos \
-                    --email SSL_EMAIL_HERE
-
-```
-
-** Step 3: **
-
-Exit from the shell session (`exit`) and set the `SSL_DOMAIN`.
-
-You can accomplish this by running the same command during setup (see top of document), but this time add an additional flag to `docker run`:
-```
-sudo docker run -d \
-                -e WEB_API_URL=http://YOUR_API_URL_HERE \
-                -e SSL_DOMAIN=YOUR-MQTT-DOMAIN-HERE \
-                -p 3002:3002 \
-                -p 8883:8883 \
-                -p 1883:1883 \
-                -p 80:3002 \
-                -p 443:443 \
-                -v /etc/letsencrypt/:/etc/letsencrypt/ \
-                --restart=always mqtt
-```
 # Renewing SSL Certs with Let's Encrypt
 
 **NOTE:** I have made a script, `letsencrypt_renewal.sh` to help.
@@ -81,6 +48,46 @@ sudo docker run -d \
                 -e WEB_API_URL=http://YOUR_API_URL_HERE \
                 -e SSL_DOMAIN=YOUR_MQTT_URL_HERE \
                 -e SSL_EMAIL=you@domain.com \
+                -p 3002:3002 \
+                -p 8883:8883 \
+                -p 1883:1883 \
+                -p 80:3002 \
+                -p 443:443 \
+                -v /etc/letsencrypt/:/etc/letsencrypt/ \
+                --restart=always mqtt
+```
+
+# Adding SSL to New Setups with Let's Encrypt
+
+**STEP 1:**
+
+SSH into the runing docker container  (`docker exec -i -t CONTAINER_ID_HERE /bin/bash`)
+
+**STEP 2:**
+
+From inside the container, run:
+
+```shell
+
+letsencrypt certonly --webroot \
+                    -w /app/public \
+                    -d SSL_DOMAIN_HERE \
+                    --text \
+                    --non-interactive \
+                    --agree-tos \
+                    --email SSL_EMAIL_HERE
+
+```
+
+**Step 3:**
+
+Exit from the shell session (`exit`) and set the `SSL_DOMAIN`.
+
+You can accomplish this by running the same command during setup (see top of document), but this time add an additional flag to `docker run`:
+```
+sudo docker run -d \
+                -e WEB_API_URL=http://YOUR_API_URL_HERE \
+                -e SSL_DOMAIN=YOUR-MQTT-DOMAIN-HERE \
                 -p 3002:3002 \
                 -p 8883:8883 \
                 -p 1883:1883 \
