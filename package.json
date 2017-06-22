@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec ./node_modules/.bin/ts-node -- ./app/index.ts",
     "test": "jest --coverage --no-cache",
-    "dev": "WEB_API_URL=http://localhost:3000 npm start"
+    "dev": "WEB_API_URL=http://127.0.0.1:3000 npm start"
   },
   "repository": {
     "type": "git",
