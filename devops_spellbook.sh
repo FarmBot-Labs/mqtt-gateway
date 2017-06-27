@@ -1,6 +1,11 @@
 #!/bin/bash
 exit
-
+#
+# DONT FORGET!!!
+#  MOST OF THESE NEED TO RUN INSIDE THE __CONTAINER__ and __NOT__
+#  THE HOST MACHINE.
+#
+#
 # SEE ACTIVE LET'S ENCRYPT KEYS:
 ls /etc/letsencrypt/live/$SSL_DOMAIN/
 
@@ -35,3 +40,6 @@ ls /etc/letsencrypt/live/$SSL_DOMAIN/
                     -p 443:443 \
                     -v /etc/letsencrypt/:/etc/letsencrypt/ \
                     --restart=always mqtt \
+
+# HOW TO RENEW CERTS:
+# See `letsencrypt_renewal.sh`
