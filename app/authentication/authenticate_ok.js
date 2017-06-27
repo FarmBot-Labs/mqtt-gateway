@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var logger_1 = require("../logger");
 /** Creates a function that is triggered when a JWT is invalid. */
 function authenticateOk(client, callback, username) {

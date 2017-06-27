@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var verify_token_1 = require("../../app/security/verify_token");
 var fetch_real_token_1 = require("../../support/fetch_real_token");
 var EMAIL = "admin@admin.com";

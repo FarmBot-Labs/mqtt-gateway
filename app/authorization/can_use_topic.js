@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var logger_1 = require("../logger");
 /** If a user has a bot of id XYZ, then they may access any topic
  *  following pattern bot/XYZ/# */

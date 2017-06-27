@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var authenticate_1 = require("./authentication/authenticate");
 var authorize_publish_1 = require("./authorization/authorize_publish");
 var authorize_subscribe_1 = require("./authorization/authorize_subscribe");

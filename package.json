@@ -4,7 +4,7 @@
   "description": "MQTT gateway for Farmbot",
   "main": "app/index.js",
   "scripts": {
-    "start": "nodemon --exec ./node_modules/.bin/ts-node -- ./app/index.ts",
+    "start": "nodemon ./app/index.js",
     "test": "jest --coverage --no-cache",
     "dev": "WEB_API_URL=http://127.0.0.1:3000 npm start"
   },

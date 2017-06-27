@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // test@test.com password123
 var verify_token_1 = require("../security/verify_token");
 var logger_1 = require("../logger");

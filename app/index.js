@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var mosca_1 = require("mosca");
 var config_1 = require("./config");
 var on_ready_1 = require("./on_ready");

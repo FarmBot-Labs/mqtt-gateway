@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var logger_1 = require("./logger");
 exports.webAppUrl = process.env.WEB_API_URL || "http://localhost:3000";
 logger_1.log("Using " + exports.webAppUrl + " as API URL");
