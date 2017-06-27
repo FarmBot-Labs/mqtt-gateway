@@ -1,50 +1,39 @@
-import "jest";
-import { authenticate as auth } from "../../app/authentication/authenticate";
-import axios from "axios";
+import { authenticate as auth } from "../../app/security/authenticate";
+import { verifyToken as verify } from '../../app/security/verify_token';
+import { fetchRealJWT } from "../../support/fetch_real_token";
+
 var EMAIL = "admin@admin.com";
 var PASSWORD = "password123";
 var validJWT;
+var invalidJWT = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE0NTg4MTk1MzYsImp0aSI6ImE0MWQxMGU1LTk3NDUtNDEzOS1hYmJlLWQ5MjgzY2M2MGRjMiIsImlzcyI6ImZhcm1ib3Qtd2ViLWFwcCIsImV4cCI6MTQ1OTE2NTEzNiwiYWxnIjoiUlMyNTYifQ.reuRxMr_WMgu9prisSjGBuIuKRQw9Tmc5U_kWJyzFm0';
 
-describe("authentication", function () {
-    beforeAll(function (done) {
-        axios
-            .post("http://localhost:3000/api/tokens", {
-                user: {
-                    email: EMAIL,
-                    password: PASSWORD
-                }
-            })
-            .then(function (resp) {
-                console.log("=========================");
-                validJWT = resp.data.token.encoded;
-                done();
-            })
-            .catch(function () {
-                console.log("STAND UP AN API SERVER LOCALLY!");
-            })
-    })
+describe("token verification", function () {
+  beforeAll(function (done) {
+    fetchRealJWT()
+      .then(function (token) {
+        validJWT = token;
+        done();
+      })
+  })
+  it("knows when you're lying", function (done) {
+    function assertions(error) {
+      expect(error.message).toBeDefined();
+      done();
+    }
+    verify(invalidJWT).then(assertions, assertions)
+  });
 
-    xit("logs in and attaches JSON web token to user", function (done) {
-        var finished = false;
-        var client: any = {};
-        var callback = function (_, isAuthorized) {
-            expect(isAuthorized).toBeTruthy();
-            expect(client.permissions).toBeDefined();
-            expect(client.permissions.sub).toBe(EMAIL);
-            done();
-        };
-        auth(client, EMAIL, PASSWORD, callback);
-    })
+  it("knows when you're telling the truth", function (done) {
+    function assertions(data) {
+      expect(data.sub).toEqual('admin@admin.com');
+      expect(data.iss).toEqual('//localhost:3000');
+      done();
+    }
 
-    it("logs in with a JWT as a password", function (done) {
-        var finished = false;
-        var client: any = {};
-        var callback = function (_, isAuthorized) {
-            expect(isAuthorized).toBeTruthy();
-            expect(client.permissions).toBeDefined();
-            expect(client.permissions.sub).toBe('admin@admin.com');
-            done();
-        };
-        auth(client, EMAIL, validJWT, callback);
-    });
+    function failure(error) {
+      fail("Failed to validate JWT. Error is above.");
+      done();
+    }
+    verify(validJWT).then(assertions, failure)
+  });
 });
