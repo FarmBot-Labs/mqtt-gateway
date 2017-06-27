@@ -31,15 +31,17 @@ ls /etc/letsencrypt/live/$SSL_DOMAIN/
     sudo docker build -t mqtt https://github.com/FarmBot/mqtt-gateway.git
 
 # HOW TO RUN THE IMAGE:
-    sudo docker run -d -e WEB_API_URL=http://YOUR_API_URL_HERE \
-                    -e SSL_DOMAIN=mqtt.thisserver.com
-                    -e WEB_API_URL=you@sysadmin.com
-                    -p 3002:3002 \
-                    -p 1883:1883 \
-                    -p 80:3002 \
-                    -p 443:443 \
-                    -v /etc/letsencrypt/:/etc/letsencrypt/ \
-                    --restart=always mqtt \
+sudo docker run -d \
+                -e WEB_API_URL=http://YOUR_API_URL_HERE \
+                -e SSL_DOMAIN=YOUR_MQTT_URL_HERE \
+                -e SSL_EMAIL=you@domain.com \
+                -p 3002:3002 \
+                -p 8883:8883 \
+                -p 1883:1883 \
+                -p 80:3002 \
+                -p 443:443 \
+                -v /etc/letsencrypt/:/etc/letsencrypt/ \
+                --restart=always mqtt
 
 # HOW TO RENEW CERTS:
 # See `letsencrypt_renewal.sh`
