@@ -1,4 +1,4 @@
-import { authenticate as auth } from "../../app/security/authenticate";
+import { authenticate as auth } from "../../app/authentication/authenticate";
 import { verifyToken as verify } from '../../app/security/verify_token';
 import { fetchRealJWT } from "../../support/fetch_real_token";
 
