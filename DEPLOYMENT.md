@@ -17,7 +17,7 @@ sudo docker run -d \
                 --restart=always mqtt
 ```
 
-Add this to command above if you use SSH:
+Add this to command above if you use SSL:
 
 ```
     -e SSL_DOMAIN=YOUR_MQTT_SERVER_HOSTNAME_HERE
